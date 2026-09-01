@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Users</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #A60321; color: white; }
+    </style>
+</head>
+<body>
+    <h1>All Registered Users</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Phone</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ user[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Form</a>
+</body>
+</html>

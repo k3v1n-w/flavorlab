@@ -1,0 +1,40 @@
+.heading{
+    color: #a60321;
+    font-size: larger;
+    flex: auto;
+    flex-direction: row;
+
+}
+
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation li {
+    padding: 5px;
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.aboutUs{
+font-size: x-large;
+
+
+}
+
+.info{
+    font-size: larger;
+
+}
+
+.restaurant{
+    background-color: #F2E9D8;
+}

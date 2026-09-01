@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        form { max-width: 400px; }
+        input { display: block; margin: 10px 0; padding: 8px; width: 100%; }
+        button { padding: 10px 20px; background-color: #A60321; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Order Form</h1>
+    <form method="POST" action="/submit">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="table_num">Table Number</label>
+        <select id="table_num" name="table_num">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+        <label for="order_type">Order type:</label>
+        <input type="radio" id="order_type" name="order_type">
+
+
+        <label for="date">Date</label>
+        <input type="text" id="date" name="date">
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>                                       
