@@ -2,22 +2,28 @@
 <html>
 <head>
     <title>Order Form</title>
+    <link rel="stylesheet" href="./static/order.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 50px; }
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #F2E9D8; }
         form { max-width: 400px; }
         input { display: block; margin: 10px 0; padding: 8px; width: 100%; }
         button { padding: 10px 20px; background-color: #A60321; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
+    <header class="heading">
+        <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
+        
+        <nav>
+            <ul class="navigation">
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/user-form">Login</a></li>
+            </ul>
+        </nav>
+    </header>
     <h1>Order Form</h1>
-    <form method="POST" action="/submit">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
+    <form method="POST" action="/submit-order">
         <label for="table_num">Table Number</label>
         <select id="table_num" name="table_num">
             <option value="1">1</option>
@@ -37,18 +43,45 @@
             <option value="15">15</option>
         </select>
 
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city">
+        <br></br>
+        <br></br>
+        <h2>Select Food Items</h2>
 
-        <label for="order_type">Order type:</label>
-        <input type="radio" id="order_type" name="order_type">
+        {% for item in food_items %}
 
+        <div class="food-item">
 
-        <label for="date">Date</label>
-        <input type="text" id="date" name="date">
+            <input
+                type="checkbox"
+                name="food_items"
+                value="{{ item['id'] }}"
+                data-price="{{ item['price'] }}"
+                class="food-checkbox"
+            >
 
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone">
+            <strong>{{ item['food_name'] }}</strong>
+
+            <p>{{ item['description'] }}</p>
+
+            <p>Category: {{ item['category'] }}</p>
+
+            <p>Price: £{{ "%.2f"|format(item['price']) }}</p>
+
+        </div>
+
+        {% endfor %}
+ 
+        <p class="label">Order type:</p>
+
+            <p class="orderTypes">
+            <input type="radio" id="delivery" name="order_type" value="delivery">
+            <label for="delivery">Delivery</label><br>
+            <input type="radio" id="takeAway" name="order_type" value="takeAway">
+            <label for="takeAway">Takeaway</label><br>
+            <input type="radio" id="eatIn" name="order_type" value="eatIn">
+            <label for="eatIn">Eat-in</label>
+            </p>
+        
 
         <button type="submit">Submit</button>
     </form>

@@ -5,42 +5,41 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./static/restaurant.css">
-        <title>Flavor lab</title>
+        <link rel="stylesheet" href="./static/menu.css">
+        <title>FlavorLab</title>
     </head>
     <body style="background-color: #F2E9D8;">
         <header class="heading">
+        <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
         <nav>
             <ul class="navigation">
-                <li>Menu</li>
-                <li>Orders</li>
-                <li>Login</li>
+                <li><a href="/about-us">About us</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/order">Orders</a></li>
+                <li><a href="/user-form">Login</a></li>
             </ul>
         </nav>
         </header>
+        <main>
 
-        <div class="heading">
-         <img src={{ url_for('static', filename='images/restaurant.jpg') }} alt="">   
-        <h1 class="montserrat-regular">Welcome to flavor lab</h1>
+        <div class="hero">   
+            <h1 class="montserrat-regular">Welcome to FlavorLab</h1>
         </div>
 
-        <div class="aboutUs">
-        <b>About us</b>
-        </div>
-    <div class="info"
-        <p2>
-            Welcome to Flavor Lab, where creativity meets cuisine. We believe great food is more than just a meal, it's an experience. Inspired by the spirit of experimentation and a passion for bold tastes, we've created a place where classic favourites and innovative flavours come together.
-
-            At Flavor Lab, every dish is carefully crafted using high-quality ingredients, fresh produce, and a commitment to exceptional taste. Our chefs are constantly exploring new combinations, techniques, and inspirations from around the world to bring exciting and memorable flavours to your table.
-
-            Whether you're joining us for a casual lunch, a family dinner, or a special celebration, our mission is simple: to deliver delicious food, warm hospitality, and an atmosphere that makes every visit unforgettable.
-        
-        </p2>
-        </div>
-    <div class="slogo"
-        <p2>
-            <b>Flavor Lab: Where every dish is an experiment worth tasting.</b>
-        </p2>
-    </div>
-    </body>
-</div>
-</html>             
+       <div class="cards">
+                <a class="homepage-card" href="/menu">
+                    Menu
+                </a>
+                <a class="homepage-card" href="/order">
+                    Orders
+                </a>
+                <a class="homepage-card" href="/user-form">
+                    Users
+                </a>
+            </div>
+       </main>
+       <footer>
+            home 
+            customer support 
+            <p> © 2026 FlavorLab All rights reserved.</p>
+        </footer>      

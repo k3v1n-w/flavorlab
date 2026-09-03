@@ -1,4 +1,15 @@
-.buttons{
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+h1 {
+  /* */
+}
+
+.button{
   background-color: #D97B66;
   border: none;
   color: white;
@@ -9,23 +20,34 @@
   font-size: 16px;
   cursor: pointer;
 }
+.heading{
+    color:#a60321;
+}
 
-ul {
+.navigation {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #333333;
+  background-color: #8C5C32;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.ul li{
+.navigation li a {
   display: block;
   color: white;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-.ul li {
-  background-color: #111111;
+.navigation li {
+  background-color: #8C5C32;
+}
+
+.a{
+    color:#D97B66
+}
+.a :visited{
+    color: #D97B66;
 }

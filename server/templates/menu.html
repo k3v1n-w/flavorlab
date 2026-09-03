@@ -1,28 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head class="header">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./static/menu.css">
-    <nav>
-        <ul class="navigation">
-              <li>About Us</li>
-              <li>Orders</li>
-              <li>Login</li>
-        </ul>
-      </nav>
-
-  <h1>Flavor labs menu</h1>
   <title>The Flavor Labs - Menu</title>
-
+  <style>
+    /* Basic tab styling — move into menu.css if you prefer */
+    .tab {
+      overflow: hidden;
+      border-bottom: 2px solid #D97B66;
+      margin: 20px 0;
+    }
+    .tab button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 12px 18px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .tab button:hover {
+      background-color: #F2E9D8;
+    }
+    .tab button.active {
+      background-color: #D97B66;
+      font-weight: bold;
+    }
+    .tabcontent {
+      display: none;
+      padding: 16px;
+      border: 1px solid #D97B66;
+      border-top: none;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+  </style>
 </head>
-
 <body style="background-color: #F2E9D8;">
+ 
+  <div class="menu">
+    <header class="header">
+      <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
+      <h1 class="heading">Menu</h1>
+    </header>
+ 
+    <nav>
+      <ul class="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/order">Orders</a></li>
+        <li><a href="/user-form">Login</a></li>
+      </ul>
+    </nav>
+ 
+    <div class="tab">
+      <button class="tablinks active" onclick="openTab(event, 'Starter')">Starter</button>
+      <button class="tablinks" onclick="openTab(event, 'MainCourse')">Main course</button>
+      <button class="tablinks" onclick="openTab(event, 'Dessert')">Dessert</button>
+      <button class="tablinks" onclick="openTab(event, 'Drinks')">Drinks</button>
+    </div>
+ 
+    <div id="Starter" class="tabcontent active">
+      <h3>Starters</h3>
+      <p>Add your starter menu items here.</p>
+    </div>
+ 
+    <div id="MainCourse" class="tabcontent">
+      <h3>Main Course</h3>
+      <p>Add your main course menu items here.</p>
+      {% for food in foodMain %}
+        <ul>
+            <li> 
+              <div>
+                <img src="{{ url_for('static', filename='images/pizza.jpg') }}"alt="Pizza" height="50px"></img>
+               <p> {{ food[1] }}</p>
+              </div>
+            </li>
+            <li>{{ food[2] }}</li>
+            <li>{{ food[3] }}</li>
+            <li>{{ food[4] }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+ 
+    <div id="Dessert" class="tabcontent">
+      <h3>Dessert</h3>
+      <p>Add your dessert menu items here.</p>
+      {% for dessert in foodDesserts %}
+        <ul>
+            <li>{{ dessert[0] }}</li>
+            <li>{{ dessert[1] }}</li>
+            <li>{{ dessert[2] }}</li>
+            <li>{{ dessert[3] }}</li>
+            <li>{{ dessert[4] }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+ 
+    <div id="Drinks" class="tabcontent">
+      <h3>Drinks</h3>
+      <p>Add your drinks menu items here.</p>
+      {% for drink in foodDrinks %}
+        <ul>
+            <li>{{ drink[0] }}</li>
+            <li>{{ drink[1] }}</li>
+            <li>{{ drink[2] }}</li>
+            <li>{{ drink[3] }}</li>
+            <li>{{ drink[4] }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+  </div>
 
-<body class="buttons">
- <button>Starter</button>
- <button>Main course</button>
- <button>Desert</button>
- <button>Drinks</button>
- </body>
+  <script>
+    function openTab(evt, tabName) {
+      // Hide all tab content
+      document.querySelectorAll('.tabcontent').forEach(function (el) {
+        el.classList.remove('active');
+      });
+ 
+      // Remove active class from all buttons
+      document.querySelectorAll('.tablinks').forEach(function (el) {
+        el.classList.remove('active');
+      });
+ 
+      // Show the selected tab and mark button active
+      document.getElementById(tabName).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+  </script>
+ 
+</body>
+</html>

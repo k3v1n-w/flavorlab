@@ -1,0 +1,29 @@
+
+
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #8C5C32;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navigation li {
+    padding: 5px;
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.orderTypes{
+  border: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	break-before: always;
+	margin: 0 0 3em 0;
+
+}

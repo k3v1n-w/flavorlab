@@ -1,0 +1,16 @@
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #8C5C32;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation li {
+    padding: 5px;
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
