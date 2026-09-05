@@ -3,11 +3,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-def get_db_connection():
-    conn = sqlite3.connect('restaurant.db')
-    conn.row_factory = sqlite3.Row
-    return conn
-
 # Route to display the form
 @app.route('/')
 def index():
@@ -17,24 +12,20 @@ def index():
 def user_form():
     return render_template('user-form.html')
 
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
 
-#@app.route('/menu')
-#def menu():
-#   return render_template('menu.html')
+@app.route('/order-success')
+def order_success():
+    return render_template('order-success.html')
 
-@app.route('/about-us')
-def aboutUs():
-    return render_template('about-us.html')
-
-@app.route('/order')
-def order():
-    return render_template('order.html')
-
-'''
-@app.route("/order-test", methods=["GET", "POST"])
+# Route to handle making an order (GET and POST)
+@app.route("/order", methods=["GET", "POST"])
 def order():
 
-    conn = get_db_connection()
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
 
     if request.method == "POST":
 
@@ -80,15 +71,26 @@ def order():
         return redirect(url_for("order_success"))
 
     # GET request - get food items
-    food_items = conn.execute(
-        "SELECT * FROM food_item WHERE availability = 'Available'"
+    starter_items = conn.execute(
+        "SELECT * FROM food_item WHERE availability = 'Available' AND category = 'Starters' "
+    ).fetchall()
+
+    main_items = conn.execute(
+        "SELECT * FROM food_item WHERE availability = 'Available' AND category = 'Main Meal'"
+    ).fetchall()
+
+    side_items = conn.execute(
+        "SELECT * FROM food_item WHERE availability = 'Available' AND category = 'Sides'"
+    ).fetchall()
+
+    dessert_items = conn.execute(
+        "SELECT * FROM food_item WHERE availability = 'Available' AND category = 'Dessert'"
     ).fetchall()
 
     conn.close()
 
-    return render_template("order.html", food_items=food_items)
-    '''
- 
+    return render_template("order.html", starters=starter_items, mains=main_items, sides=side_items , desserts=dessert_items)
+
 
 # Route to handle form submission (POST)
 @app.route('/submit', methods=['POST'])
@@ -148,56 +150,21 @@ def orders():
     except Exception as e:
         return f"Error: {e}"
 
-# Route to view all submitted data
-@app.route('/menu')
-def menu():
-    try:
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM food_item WHERE category = "Main Meal"')
-        food_mainMeal = cursor.fetchall()
-        cursor.execute('SELECT * FROM food_item WHERE category = "Drinks"')
-        food_Drinks = cursor.fetchall()
-        cursor.execute('SELECT * FROM food_item WHERE category = "Dessert"')
-        food_Desserts = cursor.fetchall()
-        conn.close()
-        return render_template('menu.html', foodMain=food_mainMeal, foodDrinks=food_Drinks, foodDesserts=food_Desserts)
-    except Exception as e:
-        return f"Error: {e}"
-'''
-# Route to view all submitted data
-@app.route('/orders')
-def orders():
-    try:
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM orders')
-        orders_data = cursor.fetchall()
-        conn.close()
-        return render_template('orders.html', orders=orders_data)
-    except Exception as e:
-        return f"Error: {e}"
-'''
-
-
-
-
 # Route to handle form submission (POST)
 @app.route('/submit-orders', methods=['POST'])
 def submit_orders():
     if request.method == 'POST':
         # Get form data
         order_type = request.form['order_type']
-        created = request.form['created']
         #total_price = request.form['']
-        
+
         try:
             # Connect to database
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
 
             # Insert data into table
-            cursor.execute('''INSERT INTO users (order_type, created) 
+            cursor.execute('''INSERT INTO orders (order_type, created) 
                             VALUES (?, ?, ?, ?)''', 
                           (order_type, created))
 
@@ -210,3 +177,4 @@ def submit_orders():
 
 if __name__ == '__main__':
     app.run(debug=True)
+ 
