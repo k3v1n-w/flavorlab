@@ -16,6 +16,10 @@ def user_form():
 def menu():
     return render_template('menu.html')
 
+@app.route('/about-us')
+def about_us():
+    return render_template('about-us.html')
+
 @app.route('/order-success')
 def order_success():
     return render_template('order-success.html')

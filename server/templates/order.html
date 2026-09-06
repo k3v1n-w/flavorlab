@@ -2,18 +2,73 @@
 <html>
 <head>
     <title>Order Form</title>
-    <link rel="stylesheet" href="./static/order.css">
     <style>
         body { font-family: Arial, sans-serif; margin: 50px; background-color: #F2E9D8; }
-        form { max-width: 400px; }
+        /* form { max-width: 600px; } */
         input { display: block; margin: 10px 0; padding: 8px; width: 100%; }
-        button { padding: 10px 20px; background-color: #A60321; color: white; border: none; cursor: pointer; }
+        button { 
+            margin-top: 20px;
+            padding: 20px; 
+            background-color: #A60321; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .table-selector select{
+            margin-left: 8px;
+            padding: 4px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        .total {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .food-section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .food-item {
+            padding: 8px;
+            margin: 5px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .food-item:hover {
+            border: 2px solid #d97b66;
+            cursor: pointer;
+        }
+
+        .order-type {
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: #d97b66;
+        }
+
     </style>
 </head>
 <body>
-    <header class="heading">
+      <header class="heading">
         <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
-        
+
         <nav>
             <ul class="navigation">
                 <li><a href="/menu">Menu</a></li>
@@ -23,7 +78,10 @@
         </nav>
     </header>
     <h1>Order Form</h1>
-    <form method="POST" action="/submit-order">
+    <form method="POST" >
+
+        <section class="order-header">
+        <div class="table-selector">   
         <label for="table_num">Table Number</label>
         <select id="table_num" name="table_num">
             <option value="1">1</option>
@@ -42,48 +100,175 @@
             <option value="14">14</option>
             <option value="15">15</option>
         </select>
+        </div> 
+        <span class="total">
+            Total: £<span id="total">0.00</span>
+        </span>
+        </section>
 
-        <br></br>
-        <br></br>
+        <section class="order-type">
+            <h3>Order Type:</h3>
+            <label>
+                Delivery
+                <input type="radio" name="order_type" value="Delivery" required>
+            </label>
+
+            <label>
+                Takeaway
+                <input type="radio" name="order_type" value="Collection">
+            </label>
+
+            <label>
+                Eat-in
+                <input type="radio" name="order_type" value="Eat In">
+            </label>
+        </section>
+
         <h2>Select Food Items</h2>
 
-        {% for item in food_items %}
+        <h3>Starters</h3>
 
+        <section class="food-section">
+        {% for item in starters %}
         <div class="food-item">
-
-            <input
-                type="checkbox"
-                name="food_items"
-                value="{{ item['id'] }}"
-                data-price="{{ item['price'] }}"
-                class="food-checkbox"
-            >
 
             <strong>{{ item['food_name'] }}</strong>
 
             <p>{{ item['description'] }}</p>
 
-            <p>Category: {{ item['category'] }}</p>
+            <!-- <p>Category: {{ item['category'] }}</p> -->
 
             <p>Price: £{{ "%.2f"|format(item['price']) }}</p>
+
+            <input
+            type="checkbox"
+            name="food_items"
+            value="{{ item['id'] }}"
+            data-price="{{ item['price'] }}"
+            class="food-checkbox"
+            >
 
         </div>
 
         {% endfor %}
- 
-        <p class="label">Order type:</p>
+     </section>
 
-            <p class="orderTypes">
-            <input type="radio" id="delivery" name="order_type" value="delivery">
-            <label for="delivery">Delivery</label><br>
-            <input type="radio" id="takeAway" name="order_type" value="takeAway">
-            <label for="takeAway">Takeaway</label><br>
-            <input type="radio" id="eatIn" name="order_type" value="eatIn">
-            <label for="eatIn">Eat-in</label>
-            </p>
-        
+     <h3>Main Courses</h3>
+      <section class="food-section">
+        {% for item in mains %}
 
-        <button type="submit">Submit</button>
+        <div class="food-item">
+
+            <strong>{{ item['food_name'] }}</strong>
+
+            <p>{{ item['description'] }}</p>
+
+            <!-- <p>Category: {{ item['category'] }}</p> -->
+
+            <p>Price: £{{ "%.2f"|format(item['price']) }}</p>
+
+            <input
+            type="checkbox"
+            name="food_items"
+            value="{{ item['id'] }}"
+            data-price="{{ item['price'] }}"
+            class="food-checkbox"
+            >
+
+        </div>
+
+        {% endfor %}
+     </section>
+
+     <h3>Sides</h3>
+      <section class="food-section">
+        {% for item in sides %}
+        <div class="food-item">
+
+            <strong>{{ item['food_name'] }}</strong>
+
+            <p>{{ item['description'] }}</p>
+
+            <!-- <p>Category: {{ item['category'] }}</p> -->
+
+            <p>Price: £{{ "%.2f"|format(item['price']) }}</p>
+
+            <input
+            type="checkbox"
+            name="food_items"
+            value="{{ item['id'] }}"
+            data-price="{{ item['price'] }}"
+            class="food-checkbox"
+            >
+
+        </div>
+
+        {% endfor %}
+     </section>
+
+     <h3>Desserts</h3>
+      <section class="food-section">
+        {% for item in desserts %}
+        <div class="food-item">
+
+            <strong>{{ item['food_name'] }}</strong>
+
+            <p>{{ item['description'] }}</p>
+
+            <!-- <p>Category: {{ item['category'] }}</p> -->
+
+            <p>Price: £{{ "%.2f"|format(item['price']) }}</p>
+
+            <input
+            type="checkbox"
+            name="food_items"
+            value="{{ item['id'] }}"
+            data-price="{{ item['price'] }}"
+            class="food-checkbox"
+            >
+
+        </div>
+
+        {% endfor %}
+     </section>
+
+
+        <button type="submit">
+            Place Order
+        </button>
     </form>
+
+     <script>
+
+        const checkboxes = document.querySelectorAll(".food-checkbox");
+        const totalDisplay = document.getElementById("total");
+
+        function calculateTotal() {
+
+            let total = 0;
+
+            checkboxes.forEach(function(checkbox) {
+
+                if (checkbox.checked) {
+
+                    total += parseFloat(checkbox.dataset.price);
+
+                }
+
+            });
+
+            totalDisplay.textContent = total.toFixed(2);
+
+        }
+
+
+        checkboxes.forEach(function(checkbox) {
+
+            checkbox.addEventListener("change", calculateTotal);
+
+        });
+
+    </script>
+
 </body>
 </html>                                       

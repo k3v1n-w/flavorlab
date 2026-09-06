@@ -37,16 +37,25 @@
     .tabcontent.active {
       display: block;
     }
+    .static-menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .static-menu-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #D97B66;
+    }
   </style>
 </head>
 <body style="background-color: #F2E9D8;">
- 
+
   <div class="menu">
     <header class="header">
       <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
       <h1 class="heading">Menu</h1>
     </header>
- 
+
     <nav>
       <ul class="navigation">
         <li><a href="/">Home</a></li>
@@ -55,27 +64,26 @@
         <li><a href="/user-form">Login</a></li>
       </ul>
     </nav>
- 
+
     <div class="tab">
-      <button class="tablinks active" onclick="openTab(event, 'Starter')">Starter</button>
-      <button class="tablinks" onclick="openTab(event, 'MainCourse')">Main course</button>
+      <button class="tablinks active" onclick="openTab(event, 'MainCourse')">Main course</button>
+      <button class="tablinks" onclick="openTab(event, 'Sides')">Sides</button>
       <button class="tablinks" onclick="openTab(event, 'Dessert')">Dessert</button>
       <button class="tablinks" onclick="openTab(event, 'Drinks')">Drinks</button>
     </div>
- 
-    <div id="Starter" class="tabcontent active">
-      <h3>Starters</h3>
-      <p>Add your starter menu items here.</p>
-    </div>
- 
-    <div id="MainCourse" class="tabcontent">
-      <h3>Main Course</h3>
-      <p>Add your main course menu items here.</p>
+
+    <div id="MainCourse" class="tabcontent active">
+      <h3>Main Meals</h3>
+      <ul class="static-menu-list">
+        <li>Alfredo Pasta food</li>
+        <li>Grilled Steak plate</li>
+        <li>Margherita Pizza or Pepperoni Pizza</li>
+      </ul>
       {% for food in foodMain %}
         <ul>
-            <li> 
+            <li>
               <div>
-                <img src="{{ url_for('static', filename='images/pizza.jpg') }}"alt="Pizza" height="50px"></img>
+                <img src="{{ url_for('static', filename='images/pizza.jpg') }}" alt="Pizza" height="50px"></img>
                <p> {{ food[1] }}</p>
               </div>
             </li>
@@ -85,10 +93,25 @@
         </ul>
         {% endfor %}
     </div>
- 
+
+    <div id="Sides" class="tabcontent">
+      <h3>Sides</h3>
+      <ul class="static-menu-list">
+        <li>French Fries bowl</li>
+        <li>Steamed Rice bowl</li>
+        <li>Macaroni and Cheese</li>
+        <li>Italian Salad</li>
+      </ul>
+    </div>
+
     <div id="Dessert" class="tabcontent">
       <h3>Dessert</h3>
-      <p>Add your dessert menu items here.</p>
+      <ul class="static-menu-list">
+        <li>Cake and Custard</li>
+        <li>Vanilla Ice Cream</li>
+        <li>Yoghurt bowl</li>
+        <li>Chocolate Fudge Cake</li>
+      </ul>
       {% for dessert in foodDesserts %}
         <ul>
             <li>{{ dessert[0] }}</li>
@@ -99,10 +122,16 @@
         </ul>
         {% endfor %}
     </div>
- 
+
     <div id="Drinks" class="tabcontent">
       <h3>Drinks</h3>
-      <p>Add your drinks menu items here.</p>
+      <ul class="static-menu-list">
+        <li>Bottled Water</li>
+        <li>Coca Cola</li>
+        <li>Fanta</li>
+        <li>Sprite</li>
+        <li>Orange Juice glass</li>
+      </ul>
       {% for drink in foodDrinks %}
         <ul>
             <li>{{ drink[0] }}</li>
@@ -121,17 +150,17 @@
       document.querySelectorAll('.tabcontent').forEach(function (el) {
         el.classList.remove('active');
       });
- 
+
       // Remove active class from all buttons
       document.querySelectorAll('.tablinks').forEach(function (el) {
         el.classList.remove('active');
       });
- 
+
       // Show the selected tab and mark button active
       document.getElementById(tabName).classList.add('active');
       evt.currentTarget.classList.add('active');
     }
   </script>
- 
+
 </body>
 </html>
