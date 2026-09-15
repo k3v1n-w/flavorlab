@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <header class="heading">
+     <a href="/"
+       ><img
+         src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+         alt="FlavorLab logo"
+         height="200px"
+       />
+     </a>
+     <nav>
+       <ul class="navigation">
+         <li><a href="/about-us">About us</a></li>
+         <li><a href="/menu">Menu</a></li>
+         <li><a href="/order">Orders</a></li>
+         <li><a href="/user-form">Login</a></li>
+       </ul>
+     </nav>
+   </header>
+
+   <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" />
+
+   <h1 class="heading">Menu</h1>
     <title>All Users</title>
     <style>
         table { border-collapse: collapse; width: 100%; }
@@ -29,5 +52,18 @@
         {% endfor %}
     </table>
     <a href="/">Back to Form</a>
+    <main></main>
+    <footer>
+            home 
+            customer support 
+
+            <address>
+                222 Regent Street, London, WW1 445 <br>
+                Phone: 0207 111 1111 <br>
+                Email: info@flavorlab.com
+            </address>
+
+            <p> © 2026 FlavorLab All rights reserved.</p>
+        </footer>
 </body>
 </html>

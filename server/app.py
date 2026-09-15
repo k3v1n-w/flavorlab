@@ -47,15 +47,16 @@ def order():
         if not selected_items:
             conn.close()
             return "Please select at least one food item."
-
         total_price = 0
+
+        table_number = request.form.get("table_num")
 
         # Create the order first
         cursor = conn.execute("""
             INSERT INTO orders
-            (user_id, order_type, order_status, total_price)
-            VALUES (?, ?, ?, ?)
-        """, (user_id, order_type, "Pending", total_price))
+            (user_id, order_type, order_status, total_price, table_no)
+            VALUES (?, ?, ?, ?, ?)
+        """, (user_id, order_type, "Pending", total_price, table_number))
 
         # Get the ID of the newly created order
         order_id = cursor.lastrowid

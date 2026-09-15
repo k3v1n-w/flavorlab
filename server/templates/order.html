@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Form</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" />
     <style>
         body { font-family: Arial, sans-serif; margin: 50px; background-color: #F2E9D8; }
         /* form { max-width: 600px; } */
@@ -66,16 +69,20 @@
     </style>
 </head>
 <body>
-      <header class="heading">
-        <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
-
-        <nav>
-            <ul class="navigation">
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about-us">About Us</a></li>
-                <li><a href="/user-form">Login</a></li>
-            </ul>
-        </nav>
+       <header class="heading">
+      <a href="/"
+        ><img
+          src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+          alt="FlavorLab logo"
+          height="200px"
+        />
+      </a>
+      <nav>
+        <ul class="navigation">
+          <li><a href="/about-us">About us</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/user-form">Login</a></li>
+        </ul>
     </header>
     <h1>Order Form</h1>
     <form method="POST" >
@@ -269,6 +276,53 @@
         });
 
     </script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="/static/restaurant.css" />
+    <title>All Orders</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #a60321;
+        color: white;
+      }
+    </style>
+  </head>
+  <body style="background-color: #f2e9d8">
+
+
+    <a href="/order">Back to Orders Form</a>
+    <footer>
+            home 
+            customer support 
+
+            <address>
+                222 Regent Street, London, WW1 445 <br>
+                Phone: 0207 111 1111 <br>
+                Email: info@flavorlab.com
+            </address>
+
+            <p> © 2026 FlavorLab All rights reserved.</p>
+        </footer>
+  </body>
+</html>
+
 
 </body>
 </html>                                       

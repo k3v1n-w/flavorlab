@@ -10,12 +10,11 @@
   align-items: center;
 }
 
-.navigation li {
-    padding: 5px;
-    display: block;
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
+.navigation li a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .orderTypes{
@@ -25,5 +24,13 @@
 	justify-content: flex-start;
 	break-before: always;
 	margin: 0 0 3em 0;
+}
 
+a {
+  color: white;
+  font-weight: bold;
+}
+a:visited {
+  color: #d97b66;
+  font-weight: bold;
 }

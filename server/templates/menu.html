@@ -3,6 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <header class="heading">
+     <a href="/"
+       ><img
+         src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+         alt="FlavorLab logo"
+         height="200px"
+       />
+     </a>
+     <nav>
+       <ul class="navigation">
+         <li><a href="/about-us">About us</a></li>
+         <li><a href="/order">Orders</a></li>
+         <li><a href="/user-form">Login</a></li>
+       </ul>
+     </nav>
+   </header>
+   </header>
+
+   <h1 class="heading">Menu</h1>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./static/menu.css">
   <title>The Flavor Labs - Menu</title>
   <style>
@@ -49,21 +70,6 @@
   </style>
 </head>
 <body style="background-color: #F2E9D8;">
-
-  <div class="menu">
-    <header class="header">
-      <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
-      <h1 class="heading">Menu</h1>
-    </header>
-
-    <nav>
-      <ul class="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/order">Orders</a></li>
-        <li><a href="/user-form">Login</a></li>
-      </ul>
-    </nav>
 
     <div class="tab">
       <button class="tablinks active" onclick="openTab(event, 'MainCourse')">Main course</button>

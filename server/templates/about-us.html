@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="restaurant">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +9,26 @@
         <title>FlavorLab</title>
 
     </head>
-    <body style="margin: 10px; background-color: #F2E9D8;">
+    <body style="margin: 10px; background-color: #F2E9D8;" class = "restaurant">
         <header class="heading">
-        <img src="{{ url_for('static', filename='images/flavorlabLogo.png') }}" alt="FlavorLab logo" height="200px">
-        <nav>
-            <ul class="navigation">
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/order">Orders</a></li>
-                <li><a href="/user-form">Login</a></li>
-            </ul>
-        </nav>
-        </header>
+     <a href="/"
+       ><img
+         src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+         alt="FlavorLab logo"
+         height="200px"
+       />
+     </a>
+     <nav>
+       <ul class="navigation">
+         <li><a href="/menu">Menu</a></li>
+         <li><a href="/order">Orders</a></li>
+         <li><a href="/user-form">Login</a></li>
+       </ul>
+     </nav>
+   </header>
 
         <div class="hero">   
-        <h1 class="montserrat-regular">About Us</h1>
+        <p><b>FlavorLab: Where every dish is an experiment worth tasting.</b></p>
         </div>
 
         <div class="aboutUs">
@@ -41,11 +46,20 @@
         
         </p>
         </div>
-    <div class="slogan"
-        <p>
-            <b>FlavorLab: Where every dish is an experiment worth tasting.</b>
-        </p>
+    
+    
     </div>
+    <footer>
+            home 
+            customer support 
+
+            <address>
+                222 Regent Street, London,WW1 445 <br>
+                Phone: (+44) 0207 332 2117 <br>
+                Email: info@flavorlab.com
+            </address>
+
+            <p> © 2026 FlavorLab All rights reserved.</p>
+        </footer>
     </body>
-</div>
 </html>             

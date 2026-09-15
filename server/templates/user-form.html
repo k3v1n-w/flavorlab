@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <header class="heading">
+     <a href="/"
+       ><img
+         src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+         alt="FlavorLab logo"
+         height="200px"
+       />
+     </a>
+     <nav>
+       <ul class="navigation">
+         <li><a href="/about-us">About us</a></li>
+         <li><a href="/menu">Menu</a></li>
+         <li><a href="/order">Orders</a></li>
+       </ul>
+     </nav>
+   </header>
+
     <title>User Registration Form</title>
     <link rel="stylesheet" href="./static/user-form.css">
     <style>
@@ -10,14 +29,8 @@
         button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
     </style>
 </head>
+    
 <body>
-    <nav>
-        <ul class="navigation">
-            <li><a href="/about-us">About Us</a></li>
-            <li><a href="/order">Orders</a></li>
-            <li><a href="/menu">Menu</a></li>
-        </ul>
-      </nav>
     <h1>User Registration Form</h1>
     <form method="POST" action="/submit">
         <label for="name">Name:</label>
@@ -40,5 +53,20 @@
 
         <button type="submit">Submit</button>
     </form>
+    <main>
+
+    </main>
+    <footer>
+            home 
+            customer support 
+
+            <address>
+                222 Regent Street, London, WW1 445 <br>
+                Phone: 0207 111 1111 <br>
+                Email: info@flavorlab.com
+            </address>
+
+            <p> © 2026 FlavorLab All rights reserved.</p>
+        </footer>
 </body>
 </html>

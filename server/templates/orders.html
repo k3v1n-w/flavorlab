@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="/static/restaurant.css" />
+    <title>All Orders</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #a60321;
+        color: white;
+      }
+    </style>
+  </head>
+  <body style="background-color: #f2e9d8">
+    <header class="heading">
+      <a href="/"
+        ><img
+          src="{{ url_for('static', filename='images/flavorlabLogo.png') }}"
+          alt="FlavorLab logo"
+          height="200px"
+        />
+      </a>
+      <nav>
+        <ul class="navigation">
+          <li><a href="/about-us">About us</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/order">Orders</a></li>
+          <li><a href="/user-form">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Orders</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Table</th>
+        <th>Customer</th>
+        <th>Order Type</th>
+        <th>Order Status</th>
+        <th>Total Price</th>
+        <th>Created At</th>
+      </tr>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order[0] }}</td>
+        <td>{{ order[6] }}</td>
+        <td>{{ order[1] }}</td>
+        <td>{{ order[2] }}</td>
+        <td>{{ order[3] }}</td>
+        <td>{{ order[4] }}</td>
+        <td>{{ order[5] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="/order">Back to Orders Form</a>
+  </body>
+</html>
