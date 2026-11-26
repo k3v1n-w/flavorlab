@@ -4,16 +4,16 @@ A restaurant management web application that allows users to browse menus, place
 FlavorLab was developed to strengthen my full-stack development skills using JavaScript and server-side technologies.
 
 Features:
-  User registration and login
-  Menu browsing
-  Order management
-  Restaurant database integration
+  User registration and login,
+  Menu browsing,
+  Order management,
+  Restaurant database integration,
   Responsive interface
 
   
 Technologies Used:
-  JavaScript
-  Flask
-  SQL Database
+  JavaScript,
+  Flask,
+  SQL Database,
   HTML/CSS
 
